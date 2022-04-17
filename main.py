@@ -6,29 +6,15 @@ connection = sqlite3.connect("test.db")
 # cursor
 crsr = connection.cursor()
 
-# primary key
-pk = [2, 3, 4, 5, 6]
+# execute the command to fetch all the data from the table emp
+crsr.execute("SELECT * FROM emp")
   
-# Enter 5 students first names
-f_name = ['Nikhil', 'Nisha', 'Abhinav', 'Raju', 'Anshul']
+# store all the fetched data in the ans variable
+ans = crsr.fetchall()
   
-# Enter 5 students last names
-l_name = ['Aggarwal', 'Rawat', 'Tomar', 'Kumar', 'Aggarwal']
-  
-# Enter their gender respectively
-gender = ['M', 'F', 'M', 'M', 'F']
-  
-# Enter their jpining data respectively
-date = ['2019-08-24', '2020-01-01', '2018-05-14', '2015-02-02', '2018-05-14']
-  
-for i in range(5):
-  
-    # This is the q-mark style:
-    crsr.execute(f'INSERT INTO emp VALUES ({pk[i]}, "{f_name[i]}", "{l_name[i]}", "{gender[i]}", "{date[i]}")')
-  
-# To save the changes in the files. Never skip this.
-# If we skip this, nothing will be saved in the database.
-connection.commit()
-  
-# close the connection
-connection.close()
+# Since we have already selected all the data entries
+# using the "SELECT *" SQL command and stored them in
+# the ans variable, all we need to do now is to print
+# out the ans variable
+for i in ans:
+    print(i)
