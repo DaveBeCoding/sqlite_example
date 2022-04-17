@@ -6,15 +6,25 @@ connection = sqlite3.connect("test.db")
 # cursor
 crsr = connection.cursor()
 
-# SQL command to insert the data in the table
-sql_command = """INSERT INTO emp VALUES (23, "Rishabh",\
-"Bansal", "M", "2014-03-28");"""
-crsr.execute(sql_command)
+# primary key
+pk = [2, 3, 4, 5, 6]
   
-# another SQL command to insert the data in the table
-sql_command = """INSERT INTO emp VALUES (1, "Bill", "Gates",\
-"M", "1980-10-28");"""
-crsr.execute(sql_command)
+# Enter 5 students first names
+f_name = ['Nikhil', 'Nisha', 'Abhinav', 'Raju', 'Anshul']
+  
+# Enter 5 students last names
+l_name = ['Aggarwal', 'Rawat', 'Tomar', 'Kumar', 'Aggarwal']
+  
+# Enter their gender respectively
+gender = ['M', 'F', 'M', 'M', 'F']
+  
+# Enter their jpining data respectively
+date = ['2019-08-24', '2020-01-01', '2018-05-14', '2015-02-02', '2018-05-14']
+  
+for i in range(5):
+  
+    # This is the q-mark style:
+    crsr.execute(f'INSERT INTO emp VALUES ({pk[i]}, "{f_name[i]}", "{l_name[i]}", "{gender[i]}", "{date[i]}")')
   
 # To save the changes in the files. Never skip this.
 # If we skip this, nothing will be saved in the database.
