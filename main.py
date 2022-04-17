@@ -17,3 +17,4 @@ conn.commit()
 # Closing the connection
 conn.close()
 
+# THIS WAS EXAMPLE(S) OF USING C.R.U.D.
