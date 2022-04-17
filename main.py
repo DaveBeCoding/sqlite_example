@@ -1,20 +1,18 @@
 import sqlite3
 
-# connecting to the database
-connection = sqlite3.connect("test.db")
 
-# cursor
-crsr = connection.cursor()
+# Connecting to sqlite
+conn = sqlite3.connect('test.db')
 
-# execute the command to fetch all the data from the table emp
-crsr.execute("SELECT * FROM emp")
-  
-# store all the fetched data in the ans variable
-ans = crsr.fetchall()
-  
-# Since we have already selected all the data entries
-# using the "SELECT *" SQL command and stored them in
-# the ans variable, all we need to do now is to print
-# out the ans variable
-for i in ans:
-    print(i)
+# Creating a cursor object using
+# the cursor() method
+cursor = conn.cursor()
+
+# Updating
+cursor.execute('''UPDATE emp SET lname = "Jyoti" WHERE fname="Rishabh";''')
+
+# Commit your changes in the database
+conn.commit()
+
+# Closing the connection
+conn.close()
